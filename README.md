@@ -1,0 +1,1 @@
+Inspired by the books Atomic Habits by James Clear, Atomic seeks to create life changing habits though incremental steps.
