@@ -41,6 +41,8 @@
                 "namedComponents": "arrow-function",
                 "unnamedComponents": "arrow-function"
             }
-        ]
+        ],
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": ["off"]
     }
 }
