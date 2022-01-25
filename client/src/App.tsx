@@ -3,7 +3,7 @@ import DailyTracker from './components/DailyTracker';
 
 const App = () => (
     <div>
-        <DailyTracker message="hello" />
+        <DailyTracker habits={habits} />
     </div>
 );
 
