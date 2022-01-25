@@ -15,7 +15,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "project": "./tsconfig.json",
+        "project": "tsconfig.json",
         "tsconfigRootDir": "./client",
         "ecmaVersion": 12,
         "sourceType": "module"
@@ -44,6 +44,8 @@
             }
         ],
         "comma-dangle": "off",
-        "@typescript-eslint/comma-dangle": ["off"]
+        "@typescript-eslint/comma-dangle": ["off"],
+        "indent": "off",
+        "@typescript-eslint/indent": ["error", 4]
     }
 }
