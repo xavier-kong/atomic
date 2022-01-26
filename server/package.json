@@ -4,12 +4,10 @@
   "description": "server for atomic",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "json-server": "json-graphql-server db.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "json-graphql-server": "^2.3.1"
   }
 }

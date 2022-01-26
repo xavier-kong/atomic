@@ -33,7 +33,7 @@ const DailyTrackerSingle = (habit: SingleHabit) => {
                         variant="body2"
                         color="text.primary"
                     >
-                        {`for ${amount} ${unit}`}
+                        {`${amount} ${unit}`}
                     </Typography>
                 }
             />
