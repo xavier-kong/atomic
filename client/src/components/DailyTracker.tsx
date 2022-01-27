@@ -10,7 +10,7 @@ interface Habits {
 const DailyTracker = ({ habits }: Habits) => (
     <List>
         {habits.map((habit) => (
-            <DailyTrackerSingle {...habit} />
+            <DailyTrackerSingle {...habit} key={habit.name} />
         ))}
     </List>
 );
