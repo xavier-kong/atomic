@@ -12,6 +12,7 @@ const DailyTrackerSingle = (habit: SingleHabit) => {
     const handleToggle = () => {
         const newChecked = !checked;
         setChecked(newChecked);
+        // call function that was passed from main
     };
 
     return (
