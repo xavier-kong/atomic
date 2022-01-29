@@ -5,6 +5,8 @@ import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import SingleHabit from '../types/SingleHabit';
 
+// add prop type for the function
+
 const DailyTrackerSingle = (habit: SingleHabit) => {
     const { name, amount, unit, done } = habit;
     const [checked, setChecked] = React.useState(done);

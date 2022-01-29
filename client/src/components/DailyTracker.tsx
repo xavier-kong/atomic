@@ -7,6 +7,8 @@ interface Habits {
     habits: SingleHabit[];
 }
 
+// need to define prop types better, include the functions too?
+
 const DailyTracker = ({ habits }: Habits) => (
     <List>
         {habits.map((habit) => (
