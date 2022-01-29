@@ -16,13 +16,14 @@ const App = () => {
         },
     });
 
-    const handleDone = async (data) => {
-        await changeDone(data);
+    const handleDone = async (data: { id: number; done: boolean }) => {
+        await changeDone({ variables: { id: data.id, done: data.done } });
+        // need to find way to update local cache with data
     };
 
     return (
         <div>
-            <DailyTracker habits={habits} />
+            <DailyTracker habits={habits} handleDone={handleDone} />
         </div>
     );
 };
