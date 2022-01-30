@@ -17,6 +17,8 @@ const App = () => {
     });
 
     const handleDone = async (data: { id: number; done: boolean }) => {
+        // may need to change types
+        // may also need to change interface declaration for handleDone
         await changeDone({ variables: { id: data.id, done: data.done } });
         // need to find way to update local cache with data
     };
