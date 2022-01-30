@@ -5,14 +5,19 @@ import DailyTrackerSingle from './DailyTrackerSingle';
 
 interface Habits {
     habits: SingleHabit[];
+    handleDone: () => void;
 }
 
 // need to define prop types better, include the functions too?
 
-const DailyTracker = ({ habits }: Habits) => (
+const DailyTracker = ({ habits, handleDone }: Habits) => (
     <List>
         {habits.map((habit) => (
-            <DailyTrackerSingle {...habit} key={habit.id} />
+            <DailyTrackerSingle
+                habit={habit}
+                key={habit.id}
+                handleDone={handleDone}
+            />
         ))}
     </List>
 );

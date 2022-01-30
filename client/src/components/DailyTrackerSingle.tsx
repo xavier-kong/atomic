@@ -5,15 +5,19 @@ import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import SingleHabit from '../types/SingleHabit';
 
-// add prop type for the function
+interface PropTypes {
+    habit: SingleHabit;
+    handleDone: () => void;
+}
 
-const DailyTrackerSingle = (habit: SingleHabit) => {
+const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
     const { name, amount, unit, done } = habit;
     const [checked, setChecked] = React.useState(done);
 
     const handleToggle = () => {
         const newChecked = !checked;
         setChecked(newChecked);
+        // handleDone() call with which data?
         // call function that was passed from main
     };
 
