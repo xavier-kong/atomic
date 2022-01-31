@@ -20,10 +20,9 @@ const App = () => {
     if (error) console.log(`Submission error! ${error.message}`);
 
     const handleDone = async (data: { id: number; done: boolean }) => {
-        const result = await changeDone({
+        await changeDone({
             variables: { id: data.id, done: data.done },
         });
-        console.log('res', result);
         // need to find way to update local cache with data
     };
 
