@@ -5,7 +5,7 @@ import DailyTrackerSingle from './DailyTrackerSingle';
 
 interface Habits {
     habits: SingleHabit[];
-    handleDone: () => void;
+    handleDone: (data: { id: number; done: boolean }) => Promise<void>;
 }
 
 // need to define prop types better, include the functions too?

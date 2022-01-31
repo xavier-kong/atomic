@@ -7,7 +7,7 @@ import SingleHabit from '../types/SingleHabit';
 
 interface PropTypes {
     habit: SingleHabit;
-    handleDone: () => void;
+    handleDone: (data: { id: number; done: boolean }) => Promise<void>;
 }
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
