@@ -8,8 +8,6 @@ interface Habits {
     handleDone: (data: { id: number; done: boolean }) => Promise<void>;
 }
 
-// need to define prop types better, include the functions too?
-
 const DailyTracker = ({ habits, handleDone }: Habits) => (
     <List>
         {habits.map((habit) => (

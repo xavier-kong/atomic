@@ -11,14 +11,16 @@ interface PropTypes {
 }
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
-    const { name, amount, unit, done } = habit;
+    const { id, name, amount, unit, done } = habit;
     const [checked, setChecked] = React.useState(done);
 
-    const handleToggle = () => {
+    const handleToggle = async () => {
         const newChecked = !checked;
         setChecked(newChecked);
-        // handleDone() call with which data?
-        // call function that was passed from main
+        await handleDone({
+            id,
+            done: checked,
+        });
     };
 
     return (
