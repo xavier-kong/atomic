@@ -20,7 +20,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
 
         await handleDone({
             id,
-            done: checked,
+            done: newChecked,
         });
     };
 

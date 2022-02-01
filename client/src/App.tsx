@@ -6,7 +6,7 @@ import CHANGE_DONE from './graphql/mutations/changeDone';
 
 const App = () => {
     const [habits, setHabits] = React.useState([]);
-    const [changeDone, { loading, error }] = useMutation(CHANGE_DONE, {
+    const [changeDone] = useMutation(CHANGE_DONE, {
         refetchQueries: [GET_HABITS, 'getHabits'],
     });
 
@@ -16,12 +16,9 @@ const App = () => {
         },
     });
 
-    if (loading) console.log('Submitting...');
-    if (error) console.log(`Submission error! ${error.message}`);
-
-    const handleDone = async (data: { id: number; done: boolean }) => {
+    const handleDone = async (req: { id: number; done: boolean }) => {
         await changeDone({
-            variables: { id: data.id, done: data.done },
+            variables: { id: req.id, done: req.done },
         });
         // need to find way to update local cache with data
     };
