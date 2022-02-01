@@ -16,7 +16,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
 
     const handleToggle = async () => {
         const newChecked = !checked;
-        setChecked(newChecked); // find way to make sure state changes
+        setChecked(newChecked);
 
         await handleDone({
             id,
