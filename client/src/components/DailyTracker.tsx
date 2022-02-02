@@ -21,3 +21,5 @@ const DailyTracker = ({ habits, handleDone }: Habits) => (
 );
 
 export default DailyTracker;
+
+// need to display streak and find way to track and display the streaks and misses
