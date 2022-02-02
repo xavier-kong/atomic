@@ -1,0 +1,16 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "mock server for atomic",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "json-server": "json-graphql-server db.js --p 3001"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "graphql": "^16.2.0",
+    "json-graphql-server": "^2.3.1"
+  }
+}

@@ -20,7 +20,6 @@ const App = () => {
         await changeDone({
             variables: { id: req.id, done: req.done },
         });
-        // need to find way to update local cache with data
     };
 
     return (
