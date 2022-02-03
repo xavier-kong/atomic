@@ -12,7 +12,11 @@ interface PropTypes {
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
     const { id, name, amount, unit, done } = habit;
-    const [checked, setChecked] = React.useState(done);
+    const [checked, setChecked] = React.useState(false);
+
+    React.useEffect(() => {
+        // use effect here to check if done
+    });
 
     const handleToggle = async () => {
         const newChecked = !checked;
