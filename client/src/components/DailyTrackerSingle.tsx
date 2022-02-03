@@ -22,6 +22,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
         const newChecked = !checked;
         setChecked(newChecked);
 
+        // create service to create new array for date
         await handleDone({
             id,
             done: newChecked,
