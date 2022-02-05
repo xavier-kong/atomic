@@ -1,4 +1,4 @@
-version: '1.0'
+version: '3.7'
 services:
     postgres:
         image: postgres
@@ -18,22 +18,22 @@ services:
         expose:
           - 5432
         volumes:
-          - ./postgres-data:/var/lib/postgresql/data
+          - ./server/dev-server/postgres-data:/var/lib/postgresql/data
           # copy the sql script to create tables
-          - ../sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+          - ./server/sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
           # copy the sql script to fill tables
-          - ./mock_data.sql:/docker-entrypoint-initdb.d/mock_data.sql
+          - ./server/dev-server/mock_data.sql:/docker-entrypoint-initdb.d/mock_data.sql
     node:
+      build: .
       image: "node:12-alpine3.14"
       user: "node"
-      working_dir: ../../server
+      working_dir: /home/xc/projects/atomic/server
       environment:
       - NODE_ENV=production
       volumes:
-      - ./:/../../server
+      - /home/xc/projects/atomic/server:/home/xc/projects/atomic/server
       expose:
       - 3001
-      command: "npm run startdev"
-
+      command: "npm run test"
 
 #https://levelup.gitconnected.com/creating-and-filling-a-postgres-db-with-docker-compose-e1607f6f882f

@@ -1,7 +1,10 @@
-.PHONY: client
+.PHONY: client up down
 
 client: ## Start client server
 	cd client && npm run start
 
-server:
-	cd server && sudo docker-compose up
+up:
+	sudo docker-compose up
+
+down:
+	sudo docker-compose down
