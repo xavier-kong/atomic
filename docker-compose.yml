@@ -20,7 +20,7 @@ services:
         volumes:
           # - ./server/dev-server/postgres-data:/var/lib/postgresql/data
           # copy the sql script to create tables
-          - ./server/sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+          - ./server/sql/schema.sql:/docker-entrypoint-initdb.d/a_schema.sql
           # copy the sql script to fill tables
           - ./server/dev-server/mock_data.sql:/docker-entrypoint-initdb.d/mock_data.sql
     # node:
