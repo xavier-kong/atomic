@@ -16,7 +16,7 @@ SELECT * FROM progress;
 SELECT * FROM habits;
 
 
--- Need to figure out how to get date as string then manipulate via date - int from generate series 
+-- Need to figure out how to get date then manipulate via date - int from generate series 
 
 -- INSERT INTO progress
 

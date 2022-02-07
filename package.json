@@ -1,0 +1,13 @@
+{
+  "name": "root",
+  "version": "1.0.0",
+  "description": "root scripts",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm run start",
+    "up": "sudo docker-compose up",
+    "down": "sudo docker-compose down"
+  },
+  "author": "",
+  "license": "ISC"
+}
