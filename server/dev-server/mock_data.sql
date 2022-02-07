@@ -14,3 +14,15 @@ END $$;
 
 SELECT * FROM progress;
 SELECT * FROM habits;
+
+
+-- Need to figure out how to get date as string then manipulate via date - int from generate series 
+
+-- INSERT INTO progress
+
+
+
+-- SELECT id, concat('Product ', id) 
+
+
+-- FROM GENERATE_SERIES(1, current_setting('my.number_of_products')::int) as id;
