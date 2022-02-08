@@ -20,9 +20,9 @@ SELECT * FROM habits;
 
 -- INSERT INTO progress
 
-
-
 -- SELECT id, concat('Product ', id) 
 
-
 -- FROM GENERATE_SERIES(1, current_setting('my.number_of_products')::int) as id;
+
+-- https://stackoverflow.com/questions/41305146/psql-generate-series-how-to-use-it-to-populate-multiple-columns-in-a-table
+-- https://stackoverflow.com/questions/7794679/inserting-values-generate-series-how-can-i-reuse-cycle-the-numbers-e-g-1-2
