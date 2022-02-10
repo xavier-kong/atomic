@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,4 +5,20 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model habits {
+  habit_uid  String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  habit_name String     @unique @db.VarChar(100)
+  amount     Int
+  unit       String     @db.VarChar(100)
+  progress   progress[]
+}
+
+model progress {
+  progres_uid String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  habit_uid   String   @db.Uuid
+  habit_date  DateTime @db.Date
+  done        Boolean
+  habits      habits   @relation(fields: [habit_uid], references: [habit_uid], onDelete: NoAction, onUpdate: NoAction)
 }
