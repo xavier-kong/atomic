@@ -3,7 +3,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-    // ... you will write your Prisma Client queries here
+    const allHabits = await prisma.habits.findMany();
+    console.log(allHabits);
 }
 
 main()
