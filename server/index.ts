@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
+import { ApolloServerPluginDrainHttpServer, gql } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
 
@@ -18,6 +18,29 @@ main()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+const typeDefs = gql`
+    type habits {
+        habit_uid: String
+        habit_name: String
+        amount: Int
+        unit: String
+    }
+
+    type progress {
+        progres_uid: String
+        habit_uid: String
+        habit_date: DateTime
+        done: Boolean
+        habits: habits
+    }
+`;
+
+const resolvers = {
+    Query {
+
+    }
+};
 
 async function startApolloServer(typeDefs, resolvers) {
     const app = express();
