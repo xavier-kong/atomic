@@ -19,29 +19,6 @@ main()
         await prisma.$disconnect();
     });
 
-const typeDefs = gql`
-    type habits {
-        habit_uid: String
-        habit_name: String
-        amount: Int
-        unit: String
-    }
-
-    type progress {
-        progres_uid: String
-        habit_uid: String
-        habit_date: DateTime
-        done: Boolean
-        habits: habits
-    }
-`;
-
-const resolvers = {
-    Query {
-
-    }
-};
-
 async function startApolloServer(typeDefs, resolvers) {
     const app = express();
     const httpServer = http.createServer(app);
