@@ -10,7 +10,7 @@ CREATE TABLE habits (
 );
 
 CREATE TABLE progress (
-  progres_uid UUID DEFAULT uuid_generate_v4 () NOT NULL PRIMARY KEY,
+  progress_uid UUID DEFAULT uuid_generate_v4 () NOT NULL PRIMARY KEY,
   habit_uid UUID REFERENCES habits(habit_uid) NOT NULL,
 	habit_date DATE NOT NULL,
   done BOOLEAN NOT NULL,
