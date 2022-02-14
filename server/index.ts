@@ -8,16 +8,8 @@ const prisma = new PrismaClient();
 
 async function main() {
     const allHabits = await prisma.habits.findMany();
-    console.log(allHabits);
+    return allHabits;
 }
-
-main()
-    .catch((e) => {
-        throw e;
-    })
-    .finally(async () => {
-        await prisma.$disconnect();
-    });
 
 const typeDefs = gql`
     type Habits {
@@ -48,7 +40,8 @@ const resolvers = {
     },
 };
 
-async function startApolloServer(typeDefs, resolvers) {
+// dont make it any in prod
+async function startApolloServer(typeDefs: any, resolvers: any) {
     const app = express();
     const httpServer = http.createServer(app);
     const server = new ApolloServer({

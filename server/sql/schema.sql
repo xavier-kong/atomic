@@ -14,5 +14,5 @@ CREATE TABLE progress (
   habit_uid UUID REFERENCES habits(habit_uid) NOT NULL,
 	habit_date DATE NOT NULL,
   done BOOLEAN NOT NULL,
-  UNIQUE(progres_uid)
+  UNIQUE(progress_uid)
 );
