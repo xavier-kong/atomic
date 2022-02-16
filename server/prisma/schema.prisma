@@ -16,9 +16,9 @@ model habits {
 }
 
 model progress {
-  progres_uid String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  habit_uid   String   @db.Uuid
-  habit_date  DateTime @db.Date
-  done        Boolean
-  habits      habits   @relation(fields: [habit_uid], references: [habit_uid], onDelete: NoAction, onUpdate: NoAction)
+  progress_uid String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  habit_uid    String   @db.Uuid
+  habit_date   DateTime @db.Date
+  done         Boolean
+  habits       habits   @relation(fields: [habit_uid], references: [habit_uid], onDelete: NoAction, onUpdate: NoAction)
 }

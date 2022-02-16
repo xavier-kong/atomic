@@ -9,7 +9,7 @@ const typeDefs = gql`
     }
 
     type Progress {
-        progres_uid: String!
+        progress_uid: String!
         habit_uid: ID!
         habit_date: String!
         done: Boolean!
@@ -17,6 +17,7 @@ const typeDefs = gql`
 
     type Query {
         allHabits: [Habits]!
+        allProgress(habit_uid: ID!): [Progress]!
     }
 `;
 
