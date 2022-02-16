@@ -1,44 +1,9 @@
-import { PrismaClient } from '@prisma/client';
 import { ApolloServer } from 'apollo-server-express';
-import { ApolloServerPluginDrainHttpServer, gql } from 'apollo-server-core';
+import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
-
-const prisma = new PrismaClient();
-
-async function main() {
-    const allHabits = await prisma.habits.findMany();
-    return allHabits;
-}
-
-const typeDefs = gql`
-    type Habits {
-        habit_uid: ID!
-        habit_name: String!
-        amount: Int!
-        unit: String!
-    }
-
-    type Progress {
-        progres_uid: String!
-        habit_uid: ID!
-        habit_date: String!
-        done: Boolean!
-    }
-
-    type Query {
-        allHabits: [Habits]!
-    }
-`;
-
-const resolvers = {
-    Query: {
-        allHabits: async () => {
-            const data = await main();
-            return data;
-        },
-    },
-};
+import typeDefs from './graphql/typedefs/index';
+import resolvers from './graphql/resolvers/index';
 
 // dont make it any in prod
 async function startApolloServer(typeDefs: any, resolvers: any) {
