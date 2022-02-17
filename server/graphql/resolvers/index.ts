@@ -1,13 +1,13 @@
 import { context, Context } from '../context';
+import { Resolvers } from './resolvers-types';
 
-const resolvers = {
+const resolvers: Resolvers = {
     Query: {
         allHabits: async () => {
             const data = await context.prisma.habits.findMany();
             return data;
         },
-        // please find way to gen
-        allProgress: async (parent: any, args: any) => {
+        allProgress: async (parent, args) => {
             const data = await context.prisma.progress.findMany({
                 where: {
                     habit_uid: args.habit_uid,
