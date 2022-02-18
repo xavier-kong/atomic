@@ -3,6 +3,8 @@ generates:
     graphql/resolvers/resolvers-types.ts:
         config:
             useIndexSignature: true
+            scalars:
+                Date: Date
         plugins:
             - typescript
             - typescript-resolvers

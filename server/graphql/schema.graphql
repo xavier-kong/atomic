@@ -5,10 +5,12 @@ type Habits {
     unit: String!
 }
 
+scalar Date
+
 type Progress {
     progress_uid: String!
     habit_uid: ID!
-    habit_date: String!
+    habit_date: Date!
     done: Boolean!
 }
 
