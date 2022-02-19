@@ -7,15 +7,16 @@ import SingleHabit from '../types/SingleHabit';
 
 interface PropTypes {
     habit: SingleHabit;
-    handleDone: (data: { id: number; done: boolean }) => Promise<void>;
+    handleDone: (data: { id: string; done: boolean }) => Promise<void>;
 }
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
-    const { id, name, amount, unit, done } = habit;
+    const { habit_uid: habitId, habit_name: habitName, amount, unit } = habit;
     const [checked, setChecked] = React.useState(false);
 
     React.useEffect(() => {
         // use effect here to check if done
+        console.log(habitId, habitName);
     });
 
     const handleToggle = async () => {
@@ -24,7 +25,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
 
         // create service to create new array for date
         await handleDone({
-            id,
+            id: habitId,
             done: newChecked,
         });
     };
@@ -40,7 +41,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
             }
         >
             <ListItemText
-                primary={name}
+                primary={habitName}
                 secondary={
                     <Typography
                         sx={{ display: 'inline' }}

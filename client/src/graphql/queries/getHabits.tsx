@@ -3,11 +3,10 @@ import { gql } from '@apollo/client';
 const GET_HABITS = gql`
     query getHabits {
         allHabits {
-            id
-            name
+            habit_uid
+            habit_name
             amount
             unit
-            done
         }
     }
 `;

@@ -5,7 +5,7 @@ import DailyTrackerSingle from './DailyTrackerSingle';
 
 interface Habits {
     habits: SingleHabit[];
-    handleDone: (data: { id: number; done: boolean }) => Promise<void>;
+    handleDone: (data: { id: string; done: boolean }) => Promise<void>;
 }
 
 const DailyTracker = ({ habits, handleDone }: Habits) => (
@@ -13,7 +13,7 @@ const DailyTracker = ({ habits, handleDone }: Habits) => (
         {habits.map((habit) => (
             <DailyTrackerSingle
                 habit={habit}
-                key={habit.id}
+                key={habit.habit_uid}
                 handleDone={handleDone}
             />
         ))}

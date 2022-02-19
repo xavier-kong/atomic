@@ -16,7 +16,7 @@ const App = () => {
         },
     });
 
-    const handleDone = async (req: { id: number; done: boolean }) => {
+    const handleDone = async (req: { id: string; done: boolean }) => {
         await changeDone({
             variables: { id: req.id, done: req.done },
         });
