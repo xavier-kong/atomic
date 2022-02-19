@@ -5,7 +5,22 @@ const resolvers: Resolvers = {
     Query: {
         allHabits: async () => {
             const data = await context.prisma.habits.findMany();
-            return data;
+            const newData = data.map(async (habit) => {
+                const progress = await context.prisma.progress.findMany({
+                    where: {
+                        habit_uid: habit.habit_uid,
+                    },
+                });
+                const newHabit = {
+                    ...habit,
+                    progress,
+                };
+
+                return newHabit;
+            });
+            console.log(newData);
+
+            return newData;
         },
         allProgress: async (parent, args) => {
             const data = await context.prisma.progress.findMany({

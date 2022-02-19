@@ -7,6 +7,9 @@ const GET_HABITS = gql`
             habit_name
             amount
             unit
+            progress {
+                ...ProgressFragment
+            }
         }
     }
 `;

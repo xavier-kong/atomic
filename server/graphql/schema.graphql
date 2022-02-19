@@ -3,9 +3,17 @@ type Habits {
     habit_name: String!
     amount: Int!
     unit: String!
+    progress: [Progress]
 }
 
 scalar Date
+
+fragment ProgressFragment on Habits {
+    progress_uid
+    habit_uid
+    habit_date
+    done
+}
 
 type Progress {
     progress_uid: String!

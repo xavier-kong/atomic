@@ -12,6 +12,7 @@ const App = () => {
 
     useQuery(GET_HABITS, {
         onCompleted: (res) => {
+            console.log('r', res.allHabits);
             setHabits(res.allHabits);
         },
     });
