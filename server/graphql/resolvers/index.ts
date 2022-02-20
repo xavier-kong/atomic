@@ -10,16 +10,15 @@ const resolvers: Resolvers = {
                     where: {
                         habit_uid: habit.habit_uid,
                     },
+                    orderBy: {
+                        habit_date: 'asc',
+                    },
                 });
-                const newHabit = {
+                return {
                     ...habit,
                     progress,
                 };
-
-                return newHabit;
             });
-            console.log(newData);
-
             return newData;
         },
         allProgress: async (parent, args) => {
