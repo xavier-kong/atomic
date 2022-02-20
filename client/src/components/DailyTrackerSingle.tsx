@@ -20,6 +20,8 @@ const calcStreak = (progress: Progress[]) => {
         }
     }
     return streak + 1;
+
+    // need to check if last date is today or yesterday
 };
 
 const calcCheck = (progress: Progress[]) => {

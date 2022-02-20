@@ -4,6 +4,7 @@ import { Resolvers } from './resolvers-types';
 const resolvers: Resolvers = {
     Query: {
         allHabits: async () => {
+            // check last date, if last date is not today, insert dates with done = false until today
             const data = await context.prisma.habits.findMany();
             const newData = data.map(async (habit) => {
                 const progress = await context.prisma.progress.findMany({
