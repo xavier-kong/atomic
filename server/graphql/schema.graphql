@@ -8,7 +8,7 @@ type Habits {
 
 scalar Date
 
-fragment ProgressFragment on Habits {
+fragment ProgressFragment on Progress {
     progress_uid
     habit_uid
     habit_date

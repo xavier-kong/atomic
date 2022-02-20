@@ -8,7 +8,10 @@ const GET_HABITS = gql`
             amount
             unit
             progress {
-                ...ProgressFragment
+                progress_uid
+                habit_uid
+                habit_date
+                done
             }
         }
     }

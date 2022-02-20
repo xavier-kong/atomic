@@ -6,6 +6,7 @@ const typeDefs = gql`
         habit_name: String!
         amount: Int!
         unit: String!
+        progress: [Progress]
     }
 
     type Progress {
@@ -13,6 +14,13 @@ const typeDefs = gql`
         habit_uid: ID!
         habit_date: String!
         done: Boolean!
+    }
+
+    fragment ProgressFragment on Progress {
+        progress_uid
+        habit_uid
+        habit_date
+        done
     }
 
     type Query {
