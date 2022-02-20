@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
                         habit_uid: habit.habit_uid,
                     },
                     orderBy: {
-                        habit_date: 'asc',
+                        habit_date: 'desc',
                     },
                 });
                 return {

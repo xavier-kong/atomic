@@ -3,20 +3,43 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import SingleHabit from '../types/SingleHabit';
+import SingleHabit, { Progress } from '../types/SingleHabit';
 
 interface PropTypes {
     habit: SingleHabit;
     handleDone: (data: { id: string; done: boolean }) => Promise<void>;
 }
 
+const calcStreak = (progress: Progress[]) => {
+    let streak = 0;
+    while (streak < progress.length) {
+        if (progress[streak].done) {
+            streak += 1;
+        } else {
+            return streak;
+        }
+    }
+    return streak + 1;
+};
+
+const calcCheck = (progress: Progress[]) => {
+    // check if first element is today
+    // check if today is true
+};
+
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
-    const { habit_uid: habitId, habit_name: habitName, amount, unit } = habit;
+    const {
+        habit_uid: habitId,
+        habit_name: habitName,
+        amount,
+        unit,
+        progress,
+    } = habit;
     const [checked, setChecked] = React.useState(false);
 
     React.useEffect(() => {
         // use effect here to check if done
-        console.log(habitId, habitName);
+        console.log(calcStreak(progress));
     });
 
     const handleToggle = async () => {
