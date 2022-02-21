@@ -2,7 +2,8 @@ import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import express from 'express';
 import http from 'http';
-import typeDefs from './graphql/typedefs/index';
+// import typeDefs from './graphql/typedefs/index';
+import typeDefs from './graphql/typedefs';
 import resolvers from './graphql/resolvers/index';
 
 // dont make it any in prod

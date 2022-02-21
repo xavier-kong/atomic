@@ -30,16 +30,20 @@
 // `;
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 import { loadSchema } from '@graphql-tools/load';
+import { importSchema } from 'graphql-import';
 
 const getSchema = async () => {
     const schema = await loadSchema('../schema.graphql', {
         // load from a single schema file
         loaders: [new GraphQLFileLoader()],
     });
-    console.log(schema);
 
     return schema;
 };
 
-const typeDefs = getSchema();
+// const typeDefs = async () => await getSchema();
+
+const typeDefs = importSchema('../schema.graphql');
+
 export default typeDefs;
+// export default getSchema;
