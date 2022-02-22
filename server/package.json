@@ -28,7 +28,8 @@
         "apollo-server-express": "^3.6.3",
         "express": "^4.17.2",
         "graphql": "^16.3.0",
-        "graphql-import": "^1.0.2"
+        "graphql-import": "^1.0.2",
+        "graphql-import-files": "^1.0.18"
     },
     "prettier": {
         "trailingComma": "es5",

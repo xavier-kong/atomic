@@ -1,34 +1,28 @@
-const schema = `
+type Habits {
+    habit_uid: ID!
+    habit_name: String!
+    amount: Int!
+    unit: String!
+    progress: [Progress]
+}
 
-    type Habits {
-        habit_uid: ID!
-        habit_name: String!
-        amount: Int!
-        unit: String!
-        progress: [Progress]
-    }
+scalar Date
 
-    scalar Date 
+fragment ProgressFragment on Progress {
+    progress_uid
+    habit_uid
+    habit_date
+    done
+}
 
-    fragment ProgressFragment on Progress {
-        progress_uid
-        habit_uid
-        habit_date
-        done
-    }
+type Progress {
+    progress_uid: String!
+    habit_uid: ID!
+    habit_date: Date!
+    done: Boolean!
+}
 
-    type Progress {
-        progress_uid: String!
-        habit_uid: ID!
-        habit_date: Date!
-        done: Boolean!
-    }
-
-    type Query {
-        allHabits: [Habits]!
-        allProgress(habit_uid: ID!): [Progress]!
-    }
-
-`
-
-module.exports = schema
+type Query {
+    allHabits: [Habits]!
+    allProgress(habit_uid: ID!): [Progress]!
+}
