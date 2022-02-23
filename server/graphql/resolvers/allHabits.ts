@@ -1,11 +1,5 @@
 import { context } from '../context';
-
-interface progress {
-    progress_uid: string;
-    habit_uid: string;
-    habit_date: string;
-    done: boolean;
-}
+import { Progress } from './resolvers-types';
 
 export const allHabits = async () => {
     const habits = await context.prisma.habits.findMany();
@@ -27,7 +21,8 @@ export const allHabits = async () => {
     return newData;
 };
 
-const checkProgress = (progress: progress[]) => {
+const checkProgress = (progress: Progress[]) => {
+    // get current date
     // check for missing dates
     // add dates
 };
