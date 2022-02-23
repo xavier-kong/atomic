@@ -22,19 +22,24 @@ export const allHabits = async () => {
     return newData;
 };
 
-const checkProgress = (progress: Progress[]) => {
+const checkProgress = async (progress: Progress[]) => {
+    const today = createTodayDate().getTime();
+    const recent = progress[0].habit_date.getTime();
+    const diff = (today - recent) / (1000 * 60 * 60 * 24);
+
+    // generate array of missing dates
+    // https://stackoverflow.com/questions/24312296/add-one-day-to-date-in-javascript
+    // write to db
+    return progress;
+};
+
+const createTodayDate = () => {
     const today = new Date();
     today.setUTCHours(0);
     today.setUTCMinutes(0);
     today.setUTCSeconds(0);
     today.setUTCMilliseconds(0);
-
-    console.log(today);
-
-    // get current date
-    // check for missing dates
-    // add dates
-    return progress;
+    return today;
 };
 
 /*

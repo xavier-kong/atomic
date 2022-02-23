@@ -11,7 +11,7 @@ BEGIN
 
     INSERT INTO progress (habit_uid, habit_date, done)
     SELECT temp_habit_uid, (curr_date - i), true
-    FROM GENERATE_SERIES(1, 7) as i;
+    FROM GENERATE_SERIES(3, 8) as i;
 
     INSERT INTO habits (habit_name, amount, unit) VALUES ('Leetcode', 1, 'times')
     RETURNING habit_uid INTO temp_habit_uid;
