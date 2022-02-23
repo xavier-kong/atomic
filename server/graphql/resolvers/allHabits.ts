@@ -12,6 +12,7 @@ export const allHabits = async () => {
                 habit_date: 'desc',
             },
         });
+
         const updatedProgress = checkProgress(progress);
         return {
             ...habit,
@@ -22,9 +23,18 @@ export const allHabits = async () => {
 };
 
 const checkProgress = (progress: Progress[]) => {
+    const today = new Date();
+    today.setUTCHours(0);
+    today.setUTCMinutes(0);
+    today.setUTCSeconds(0);
+    today.setUTCMilliseconds(0);
+
+    console.log(today);
+
     // get current date
     // check for missing dates
     // add dates
+    return progress;
 };
 
 /*
