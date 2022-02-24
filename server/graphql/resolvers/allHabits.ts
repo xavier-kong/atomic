@@ -19,14 +19,14 @@ export const allHabits = async () => {
 };
 
 const checkProgress = (progress: Progress[]) => {
-    const today = createTodayDate().getTime();
+    const todayDate = createTodayDate();
+    const today = todayDate.getTime();
     const recent = progress[0].habit_date.getTime();
     const diff = (today - recent) / (1000 * 60 * 60 * 24);
 
     for (let i = 0; i < diff; i++) {
-        const date = new Date();
-        date.setDate(date.getDate() - i);
-        insertToDb(progress[0], date);
+        todayDate.setDate(todayDate.getDate() - i);
+        insertToDb(progress[0], todayDate);
     }
 
     return progress;

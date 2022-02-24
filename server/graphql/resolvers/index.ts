@@ -8,14 +8,6 @@ const resolvers: Resolvers = {
             const res = await allHabits();
             return res;
         },
-        allProgress: async (parent, args) => {
-            const data = await context.prisma.progress.findMany({
-                where: {
-                    habit_uid: args.habit_uid,
-                },
-            });
-            return data;
-        },
     },
 };
 

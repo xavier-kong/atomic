@@ -20,13 +20,17 @@ const calcStreak = (progress: Progress[]) => {
         }
     }
     return streak + 1;
-
-    // need to check if last date is today or yesterday
 };
 
 const calcCheck = (progress: Progress[]) => {
-    // check if first element is today
-    // check if today is true
+    const date = new Date(progress[0].habit_date);
+    const today = new Date();
+    return (
+        date.getDate() === today.getDate() &&
+        date.getMonth() === today.getMonth() &&
+        date.getFullYear() === today.getFullYear() &&
+        progress[0].done === true
+    );
 };
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
@@ -38,10 +42,13 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
         progress,
     } = habit;
     const [checked, setChecked] = React.useState(false);
+    const [streak, setStreak] = React.useState(0);
 
     React.useEffect(() => {
-        // use effect here to check if done
-        console.log(calcStreak(progress));
+        const newChecked = calcCheck(progress);
+        setChecked(newChecked);
+        const newStreak = calcStreak(progress);
+        setStreak(newStreak);
     });
 
     const handleToggle = async () => {
