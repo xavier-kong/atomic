@@ -22,7 +22,7 @@ export const allHabits = async () => {
     return newData;
 };
 
-const checkProgress = async (progress: Progress[]) => {
+const checkProgress = (progress: Progress[]) => {
     const today = createTodayDate().getTime();
     const recent = progress[0].habit_date.getTime();
     const diff = (today - recent) / (1000 * 60 * 60 * 24);
