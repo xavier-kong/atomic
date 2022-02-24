@@ -1,19 +1,15 @@
 import { context } from '../context';
-import { Progress } from './resolvers-types';
+import { Progress, Habits } from './resolvers-types';
 
 export const allHabits = async () => {
     const habits = await context.prisma.habits.findMany();
     const newData = habits.map(async (habit) => {
-        const progress = await context.prisma.progress.findMany({
-            where: {
-                habit_uid: habit.habit_uid,
-            },
-            orderBy: {
-                habit_date: 'desc',
-            },
-        });
+        const progress = await getProgress(habit);
 
-        const updatedProgress = checkProgress(progress);
+        await checkProgress(progress);
+
+        const updatedProgress = await getProgress(habit);
+
         return {
             ...habit,
             progress: updatedProgress,
@@ -27,9 +23,12 @@ const checkProgress = (progress: Progress[]) => {
     const recent = progress[0].habit_date.getTime();
     const diff = (today - recent) / (1000 * 60 * 60 * 24);
 
-    // generate array of missing dates
-    // https://stackoverflow.com/questions/24312296/add-one-day-to-date-in-javascript
-    // write to db
+    for (let i = 0; i < diff; i++) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        insertToDb(progress[0], date);
+    }
+
     return progress;
 };
 
@@ -42,13 +41,25 @@ const createTodayDate = () => {
     return today;
 };
 
-/*
-get habits
-for each habit
-    check progress
-    if missing dates
-        add missing dates as false to db
-return habits
+const insertToDb = async (progress: Progress, date: Date) => {
+    await context.prisma.progress.create({
+        data: {
+            habit_uid: progress.habit_uid,
+            habit_date: date,
+            done: false,
+        },
+    });
+};
 
-    // check last date, if last date is not today, insert dates with done = false until today
-*/
+const getProgress = async (habit: Habits) => {
+    const progress = await context.prisma.progress.findMany({
+        where: {
+            habit_uid: habit.habit_uid,
+        },
+        orderBy: {
+            habit_date: 'desc',
+        },
+    });
+
+    return progress;
+};
