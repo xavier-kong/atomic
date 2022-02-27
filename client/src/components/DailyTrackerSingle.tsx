@@ -29,7 +29,6 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
         setChecked(newChecked);
         const newStreak = calcStreak(progress);
         setStreak(newStreak);
-        console.log(streak);
     });
 
     const handleToggle = async () => {
