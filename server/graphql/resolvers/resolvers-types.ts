@@ -24,6 +24,17 @@ export type Habits = {
   unit: Scalars['String'];
 };
 
+export type Mutation = {
+  __typename?: 'Mutation';
+  changeDone: Progress;
+};
+
+
+export type MutationChangeDoneArgs = {
+  done: Scalars['Boolean'];
+  progress_uid: Scalars['ID'];
+};
+
 export type Progress = {
   __typename?: 'Progress';
   done: Scalars['Boolean'];
@@ -118,6 +129,7 @@ export type ResolversTypes = ResolversObject<{
   Habits: ResolverTypeWrapper<Habits>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
+  Mutation: ResolverTypeWrapper<{}>;
   Progress: ResolverTypeWrapper<Progress>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
@@ -130,6 +142,7 @@ export type ResolversParentTypes = ResolversObject<{
   Habits: Habits;
   ID: Scalars['ID'];
   Int: Scalars['Int'];
+  Mutation: {};
   Progress: Progress;
   Query: {};
   String: Scalars['String'];
@@ -148,6 +161,10 @@ export type HabitsResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
+  changeDone?: Resolver<ResolversTypes['Progress'], ParentType, ContextType, RequireFields<MutationChangeDoneArgs, 'done' | 'progress_uid'>>;
+}>;
+
 export type ProgressResolvers<ContextType = any, ParentType extends ResolversParentTypes['Progress'] = ResolversParentTypes['Progress']> = ResolversObject<{
   done?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   habit_date?: Resolver<ResolversTypes['Date'], ParentType, ContextType>;
@@ -164,6 +181,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 export type Resolvers<ContextType = any> = ResolversObject<{
   Date?: GraphQLScalarType;
   Habits?: HabitsResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Progress?: ProgressResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;

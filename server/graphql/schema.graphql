@@ -26,3 +26,7 @@ type Query {
     allHabits: [Habits]!
     allProgress(habit_uid: ID!): [Progress]!
 }
+
+type Mutation {
+    changeDone(progress_uid: ID!, done: Boolean!): Progress!
+}
