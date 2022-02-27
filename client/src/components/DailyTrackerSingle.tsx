@@ -73,14 +73,18 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
                     checked={checked}
                 />
             }
+            alignItems="flex-start"
         >
             <ListItemAvatar
                 sx={{
-                    bgcolor: 'red',
                     borderRadius: '50%',
                     border: 1,
                     height: '50px',
                     width: '50px',
+                    mx: 2,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    display: 'flex',
                 }}
             >
                 <Typography variant="button">{streak}</Typography>
