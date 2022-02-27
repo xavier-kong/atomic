@@ -4,35 +4,14 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import SingleHabit, { Progress } from '../types/SingleHabit';
+import SingleHabit from '../types/SingleHabit';
+import calcStreak from '../utils/calcStreak';
+import calcChecked from '../utils/calcChecked';
 
 interface PropTypes {
     habit: SingleHabit;
     handleDone: (data: { id: string; done: boolean }) => Promise<void>;
 }
-
-const calcStreak = (progress: Progress[]) => {
-    let streak = 0;
-    while (streak < progress.length) {
-        if (progress[streak].done) {
-            streak += 1;
-        } else {
-            return streak;
-        }
-    }
-    return streak + 1;
-};
-
-const calcCheck = (progress: Progress[]) => {
-    const date = new Date(progress[0].habit_date);
-    const today = new Date();
-    return (
-        date.getDate() === today.getDate() &&
-        date.getMonth() === today.getMonth() &&
-        date.getFullYear() === today.getFullYear() &&
-        progress[0].done === true
-    );
-};
 
 const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
     const {
@@ -46,7 +25,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
     const [streak, setStreak] = React.useState(0);
 
     React.useEffect(() => {
-        const newChecked = calcCheck(progress);
+        const newChecked = calcChecked(progress);
         setChecked(newChecked);
         const newStreak = calcStreak(progress);
         setStreak(newStreak);
@@ -73,7 +52,6 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
                     checked={checked}
                 />
             }
-            alignItems="flex-start"
         >
             <ListItemAvatar
                 sx={{
