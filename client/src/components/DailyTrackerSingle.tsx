@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import SingleHabit, { Progress } from '../types/SingleHabit';
@@ -49,6 +50,7 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
         setChecked(newChecked);
         const newStreak = calcStreak(progress);
         setStreak(newStreak);
+        console.log(streak);
     });
 
     const handleToggle = async () => {
@@ -72,6 +74,17 @@ const DailyTrackerSingle = ({ habit, handleDone }: PropTypes) => {
                 />
             }
         >
+            <ListItemAvatar
+                sx={{
+                    bgcolor: 'red',
+                    borderRadius: '50%',
+                    border: 1,
+                    height: '50px',
+                    width: '50px',
+                }}
+            >
+                <Typography variant="button">{streak}</Typography>
+            </ListItemAvatar>
             <ListItemText
                 primary={habitName}
                 secondary={
